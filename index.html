@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marc Delaney · Castle Fine Art</title>
+<meta name="description" content="Digital business card — Marc Delaney, Castle Fine Art.">
+<meta name="theme-color" content="#f0eee9">
+
+<!-- Open Graph / iMessage preview -->
+<meta property="og:title" content="Marc Delaney · Castle Fine Art">
+<meta property="og:description" content="Save my contact details and get in touch.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="assets/photo.jpg">
+
+<style>
+  /* ---------- Brand fonts (self-hosted) ---------- */
+  @font-face {
+    font-family: "DIN 2014";
+    src: url("fonts/din-light.woff2") format("woff2");
+    font-weight: 300; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "DIN 2014";
+    src: url("fonts/din-regular.woff2") format("woff2");
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "DIN 2014";
+    src: url("fonts/din-medium.woff2") format("woff2");
+    font-weight: 500; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "DIN 2014";
+    src: url("fonts/din-bold.woff2") format("woff2");
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "Acta Display";
+    src: url("fonts/acta-display-bold-italic.woff2") format("woff2");
+    font-weight: 700; font-style: italic; font-display: swap;
+  }
+
+  /* ---------- Brand tokens (from CFA Brand Guidelines) ---------- */
+  :root {
+    --grey:        #63656a; /* Cool Grey 10 */
+    --dark-grey:   #776d68; /* Dark Grey    */
+    --near-black:  #1c1b1a; /* logo/text ink */
+    --cotton:      #f0eee9; /* Egyptian Cotton */
+    --cotton-deep: #e6e2da; /* subtle dividers/hover */
+    --accent-orange: #ea560d;
+    --accent-blue:   #6fc6d7;
+    --accent-purple: #ab5c7c;
+
+    --body:  "DIN 2014", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Acta Display", Georgia, "Times New Roman", serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--body);
+    font-weight: 400;
+    color: var(--grey);
+    background: var(--cotton);
+    display: flex;
+    justify-content: center;
+    padding: 32px 20px calc(32px + env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+  }
+
+  /* ---------- Wordmark ---------- */
+  .wordmark {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: .34em;
+    color: var(--near-black);
+    text-transform: uppercase;
+    margin: 0 0 34px;
+    padding-left: .34em; /* optical centering for letter-spacing */
+  }
+  .wordmark b { font-weight: 700; }
+  .wordmark span { font-weight: 300; }
+
+  /* ---------- Photo ---------- */
+  .photo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .photo {
+    width: 132px; height: 132px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--cotton-deep);
+    box-shadow: 0 10px 30px rgba(28,27,26,.14);
+  }
+  /* Initials fallback if photo.jpg is missing */
+  .photo-fallback {
+    width: 132px; height: 132px;
+    border-radius: 50%;
+    display: none;
+    align-items: center; justify-content: center;
+    background: var(--grey);
+    color: var(--cotton);
+    font-family: var(--serif); font-style: italic;
+    font-size: 46px;
+    box-shadow: 0 10px 30px rgba(28,27,26,.14);
+  }
+
+  /* ---------- Identity ---------- */
+  .name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 1.04;
+    color: var(--near-black);
+    text-align: center;
+    margin: 0 0 12px;
+  }
+  .title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin: 0;
+  }
+  .org {
+    text-align: center;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: .04em;
+    color: var(--dark-grey);
+    margin: 4px 0 30px;
+  }
+
+  /* ---------- Primary CTA ---------- */
+  .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 26px;
+    background: var(--near-black);
+    color: var(--cotton);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background .18s ease, transform .06s ease;
+  }
+  .save-btn:hover { background: var(--grey); }
+  .save-btn:active { transform: translateY(1px); }
+  .save-btn svg { width: 18px; height: 18px; }
+
+  /* ---------- Contact rows ---------- */
+  .rows { list-style: none; margin: 0 0 28px; padding: 0; }
+  .rows li { border-top: 1px solid var(--cotton-deep); }
+  .rows li:last-child { border-bottom: 1px solid var(--cotton-deep); }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 15px 4px;
+    text-decoration: none;
+    color: var(--near-black);
+  }
+  .row:active { background: var(--cotton-deep); }
+  .row .icon {
+    flex: 0 0 22px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey);
+  }
+  .row .icon svg { width: 21px; height: 21px; }
+  .row .text { flex: 1 1 auto; min-width: 0; }
+  .row .label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--dark-grey);
+    margin-bottom: 2px;
+  }
+  .row .value {
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--near-black);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .row .chev { flex: 0 0 auto; color: var(--dark-grey); opacity: .55; }
+  .row .chev svg { width: 16px; height: 16px; }
+
+  /* ---------- Socials ---------- */
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 34px;
+  }
+  .socials a {
+    width: 46px; height: 46px;
+    border: 1px solid var(--cotton-deep);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey);
+    text-decoration: none;
+    transition: background .18s ease, color .18s ease;
+  }
+  .socials a:hover { background: var(--near-black); color: var(--cotton); border-color: var(--near-black); }
+  .socials a svg { width: 20px; height: 20px; }
+
+  /* ---------- Strapline + accent bar ---------- */
+  .strapline {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--dark-grey);
+    margin: 0;
+  }
+  .strapline b { font-weight: 700; color: var(--grey); }
+
+  /* Brand colour bar — guidelines: bottom-right only */
+  .accent-bar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    height: 8px;
+  }
+  .accent-bar i { display: block; height: 100%; }
+  .accent-bar .b1 { width: 34px; background: var(--accent-orange); }
+  .accent-bar .b2 { width: 22px; background: var(--accent-blue); }
+  .accent-bar .b3 { width: 28px; background: var(--accent-purple); }
+
+  @media (min-width: 430px) {
+    .card { padding-top: 10px; }
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+
+    <!-- LOGO LOCKUP: CASTLE (bold) + FINE ART (light) -->
+    <p class="wordmark"><b>Castle</b> <span>Fine&nbsp;Art</span></p>
+
+    <div class="photo-wrap">
+      <!-- REPLACE assets/photo.jpg with Marc's headshot -->
+      <img class="photo" src="assets/photo.jpg" alt="Marc Delaney"
+           onerror="this.style.display='none';document.getElementById('photoFallback').style.display='flex';">
+      <div class="photo-fallback" id="photoFallback">MD</div>
+    </div>
+
+    <!-- REPLACE: name / title -->
+    <h1 class="name">Marc Delaney</h1>
+    <p class="title">Retail Tech Lead</p>
+    <p class="org">Castle Fine Art</p>
+
+    <!-- Downloads the vCard -> native "Add Contact" sheet -->
+    <a class="save-btn" href="contact.vcf" download="Marc-Delaney-Castle-Fine-Art.vcf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+      </svg>
+      Save to Contacts
+    </a>
+
+    <ul class="rows">
+      <!-- REPLACE: phone number (tel: uses international format) -->
+      <li><a class="row" href="tel:+447393359257">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="text"><span class="label">Call</span><span class="value">07393 359257</span></span>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a></li>
+
+      <!-- REPLACE / CONFIRM: email domain (.com vs .co.uk) -->
+      <li><a class="row" href="mailto:mdelaney@castlefineart.com">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+        <span class="text"><span class="label">Email</span><span class="value">mdelaney@castlefineart.com</span></span>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a></li>
+
+      <li><a class="row" href="https://www.castlefineart.com" target="_blank" rel="noopener">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+        <span class="text"><span class="label">Website</span><span class="value">castlefineart.com</span></span>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a></li>
+
+      <!-- REPLACE: gallery address (also update the destination= query, URL-encoded) -->
+      <li><a class="row" href="https://www.google.com/maps/dir/?api=1&destination=Castle%20Fine%20Art%20Head%20Office%2C%20The%20Mailbox%2C%20Wharfside%20St%2C%20Birmingham%20B1%201RD" target="_blank" rel="noopener">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span class="text"><span class="label">Head Office · The Mailbox</span><span class="value">Wharfside St, Birmingham B1 1RD</span></span>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a></li>
+    </ul>
+
+    <div class="socials">
+      <!-- REPLACE: social URLs -->
+      <a href="https://www.linkedin.com/in/marc-delaney-185587152/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zM8 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.85-2.75 3.77V24H8V8z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/marcosis11/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+
+    <p class="strapline"><b>Your World</b>, Our Art&reg;</p>
+  </main>
+
+  <div class="accent-bar" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+</body>
+</html>

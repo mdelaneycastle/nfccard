@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Delaney;Marc;;;
+FN:Marc Delaney
+ORG:Castle Fine Art
+TITLE:Retail Tech Lead
+TEL;TYPE=CELL,VOICE:+447393359257
+EMAIL;TYPE=WORK,INTERNET:mdelaney@castlefineart.com
+URL:https://www.castlefineart.com
+ADR;TYPE=WORK:;;Unit 29-31 Level 2\, The Mailbox\, Wharfside St;Birmingham;;B1 1RD;United Kingdom
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/marc-delaney-185587152/
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/marcosis11/
+NOTE:Castle Fine Art — Your World, Our Art.
+END:VCARD
