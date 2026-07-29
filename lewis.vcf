@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Willett;Lewis;;;
+FN:Lewis Willett
+ORG:Castle Fine Art;Leeds Gallery
+TITLE:Gallery Manager
+TEL;TYPE=CELL,VOICE:+447519443851
+EMAIL;TYPE=WORK,INTERNET:lwillett@castlefineart.com
+URL:https://www.castlefineart.com
+ADR;TYPE=WORK:;;38-40 Victoria Quarter\, Queen Victoria St;Leeds;;LS1 6BE;United Kingdom
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/castlegalleries/
+NOTE:Castle Fine Art — Your World, Our Art.
+END:VCARD
