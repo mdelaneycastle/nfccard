@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Bianchini;Federico;;;
+FN:Federico Bianchini
+ORG:Castle Fine Art;Manchester Gallery
+TITLE:Art Consultant
+TEL;TYPE=CELL,VOICE:+447448340536
+EMAIL;TYPE=WORK,INTERNET:fbianchini@castlefineart.com
+URL:https://www.castlefineart.com
+ADR;TYPE=WORK:;;12-14 King Street;Manchester;;M2 6AG;United Kingdom
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/castlegalleries/
+NOTE:Castle Fine Art — Your World, Our Art.
+END:VCARD
